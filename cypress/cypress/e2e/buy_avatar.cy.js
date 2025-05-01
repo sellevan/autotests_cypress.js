@@ -1,0 +1,31 @@
+describe('Проверка покупки нового аватара', function () {
+
+    it('e2e тест на покупку нового аватара для тренера', function () {
+
+         cy.visit('https://pokemonbattle.ru/login');
+         cy.get('#k_email').type('sellevan0330@yandex.ru');
+         cy.get('#k_password').type('Evemin67');
+         cy.get('.MuiButton-root').click();
+         cy.wait(2000);
+         cy.get('.header_card_trainer').click();
+         cy.wait(1000);
+         cy.get('.k_mobile > :nth-child(5)').click();
+         cy.wait(1000);
+         cy.get('.available > button').first().click();
+         cy.get('.payment_form_card_form > :nth-child(2) > .style_1_base_input').type('4620869113632996');
+         cy.get(':nth-child(1) > .style_1_base_input').type('1226');  
+         cy.get('.payment_form_card_form_inputs > :nth-child(2) > .style_1_base_input').type('125');
+         cy.get('.payment_form_card_form_input_last > .style_1_base_input').type('NIKITA SALENKO');
+         cy.get('.style_1_base_button_payment_body > .style_1_base_button_payment').click();
+         cy.get('.style_1_base_input').type('56456');  
+         cy.get('.style_1_base_button_payment_body > .style_1_base_button_payment').click();
+         cy.contains('Покупка прошла успешно').should('be.visible');
+
+
+         //cy.get('.card_csv').type('125');                             // вводим CVV карты
+        // cy.get('.card_date').type('1226');                           // вводим срок действия карты
+        // cy.get('.card_name').type('NAME'); 
+
+
+    }) 
+})
