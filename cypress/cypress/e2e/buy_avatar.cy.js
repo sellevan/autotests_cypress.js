@@ -3,8 +3,8 @@ describe('Проверка покупки нового аватара', function
     it('e2e тест на покупку нового аватара для тренера', function () {
 
          cy.visit('https://pokemonbattle.ru/login');
-         cy.get('#k_email').type('sellevan0330@yandex.ru');
-         cy.get('#k_password').type('Evemin67');
+         cy.get('#k_email').type('USER_LOGIN');
+         cy.get('#k_password').type('USER_PASSWORD');
          cy.get('.MuiButton-root').click();
          cy.wait(2000);
          cy.get('.header_card_trainer').click();
