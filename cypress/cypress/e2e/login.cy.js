@@ -25,14 +25,14 @@ describe('Проверка авторизации', function () {
         it('проверка логики восстановления пароля', function () {
             cy.get(main_page.fogot_pass_btn).should('have.css', 'color', 'rgb(0, 85, 152)');
             cy.get(main_page.fogot_pass_btn).click();
-            cy.get(recovery_password_page.email).type('sellevan0330@yandex.ru');
+            cy.get(recovery_password_page.email).type('USER_LOGIN');
             cy.get(recovery_password_page.send_button).click();
             cy.get(result_page.title).contains('Успешно отправили пароль на e-mail');
         })
 
         it('Верный логин и НЕверный пароль', function () {
             cy.get(main_page.email).type(data.login);
-            cy.get('#pass').type('iLoveqastudio11');
+            cy.get('#pass').type('НЕверный пароль');
             cy.get(main_page.login_button).click();
             cy.get(result_page.title).should('be.visible');
             cy.get(result_page.title).contains('Такого логина или пароля нет');
@@ -48,7 +48,7 @@ describe('Проверка авторизации', function () {
 
         it('Валидация на наличие @', function () {
             cy.get(main_page.email).type('germandolnikov.ru');
-            cy.get(main_page.password).type('iLoveqastudio');
+            cy.get(main_page.password).type('USER_PASSWORD');
             cy.get(main_page.login_button).click();
             cy.get(result_page.title).should('be.visible');
             cy.get(result_page.title).contains('Нужно исправить проблему валидации');
